@@ -16,7 +16,7 @@
             <div class="form-group has-feedback feedback-left">
                 <x-jet-label for="email" value="{{ __('Email') }}" />
                 <x-jet-input id="email" class="form-control" type="email" name="email" :value="old('email')" required autofocus />
-                <span class="mdi mdi-account form-control-feedback" aria-hidden="true"></span>
+                <span class="mdi mdi-email form-control-feedback" aria-hidden="true"></span>
             </div>
 
             <div class="form-group has-feedback feedback-left">
