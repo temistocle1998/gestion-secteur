@@ -8,12 +8,13 @@
             <div class="form-group has-feedback feedback-left">
                 <x-jet-label for="name" value="{{ __('Name') }}" />
                 <x-jet-input id="name" class="form-control" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+                <span class="mdi mdi-account form-control-feedback" aria-hidden="true"></span>
             </div>
 
             <div class="form-group has-feedback feedback-left">
                 <x-jet-label for="email" value="{{ __('Email') }}" />
                 <x-jet-input id="email" class="form-control" type="email" name="email" :value="old('email')" required />
-                <span class="mdi mdi-account form-control-feedback" aria-hidden="true"></span>
+                <span class="mdi mdi-email form-control-feedback" aria-hidden="true"></span>
             </div>
 
             <div class="form-group has-feedback feedback-left"">
