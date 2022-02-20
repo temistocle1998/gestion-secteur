@@ -1,0 +1,12 @@
+@csrf
+<div class="form-group">
+    <label class="col-xs-12" for="nom">Nom</label>
+    <div class="col-xs-12">
+      <input class="form-control" type="text"  @error('nom') is-invalid @enderror" placeholder="Entrer le nom du secteur ..." name="nom"  value="{{ old('nom') ?? $secteur->nom}}">
+      @error('nom')
+      <div class="invalid-feedback">
+        {{$errors->first('nom')}}
+      </div>
+      @enderror
+    </div>
+</div>

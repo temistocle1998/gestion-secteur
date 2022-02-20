@@ -2,26 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Budget;
+use App\Models\Secteur;
 use Illuminate\Http\Request;
 
-class BudgetController extends Controller
+class SecteurController extends Controller
 {
-        /**
+       /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $budgets = Budget::all();
+        $secteurs = Secteur::all();
 
-        return view('budgets.index', compact('budgets'));
+        return view('secteurs.index', compact('secteurs'));
     }
 
-    public function create(Budget $region)
+    public function create(Secteur $secteur)
     {
-        return view('budgets.create', compact('region'));
+        return view('secteurs.create', compact('secteur'));
     }
 
     /**
@@ -36,48 +36,48 @@ class BudgetController extends Controller
             'nom' => 'required|string',
         ]);
 
-        $region = Budget::create($data);
+        $secteur = Secteur::create($data);
 
-        return redirect('budgets');
+        return redirect('secteurs');
     }
 
     /**
      * edit the specified resource.
      *
-     * @param  \App\Models\Budget  $region
+     * @param  \App\Models\Secteur  $secteur
      * @return \Illuminate\Http\Response
      */
-    public function edit(Budget $region)
+    public function edit(Secteur $secteur)
     {
-        return view('budgets.edit', compact('region'));
+        return view('secteurs.edit', compact('secteur'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Budget  $region
+     * @param  \App\Models\Secteur  $secteur
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Budget $region)
+    public function update(Request $request, Secteur $secteur)
     {
         $data = request()->validate([
             'nom' => 'required|string',
         ]);
 
-        $region->update($data);
-        return redirect('budgets/'. $region->id.'/edit');
+        $secteur->update($data);
+        return redirect('secteurs/'. $secteur->id.'/edit');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Budget  $region
+     * @param  \App\Models\Secteur  $secteur
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Budget $region)
+    public function destroy(Secteur $secteur)
     {
-        $region->delete();
-        return redirect('budgets');
+        $secteur->delete();
+        return redirect('secteurs');
     }
 }

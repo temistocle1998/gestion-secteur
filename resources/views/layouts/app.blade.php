@@ -34,13 +34,27 @@
                       <li class="nav-item nav-item-has-subnav">
                         <a href="javascript:void(0)"><i class="mdi mdi-city"></i> Régions</a>
                         <ul class="nav nav-subnav">
-                          <li> <a href="{{ url('users') }}">Ajouter</a> </li>
+                          <li> <a href="{{ url('regions') }}">Ajouter</a> </li>
                         </ul>
                       </li>
                       <li class="nav-item nav-item-has-subnav">
                         <a href="javascript:void(0)"><i class="mdi mdi-account"></i> Utilisateurs</a>
                         <ul class="nav nav-subnav">
                           <li> <a href="{{ url('users') }}">Ajouter</a> </li>
+                        </ul>
+                      </li>
+
+                      <li class="nav-item nav-item-has-subnav">
+                        <a href="javascript:void(0)"><i class="mdi mdi-domain"></i> Secteurs</a>
+                        <ul class="nav nav-subnav">
+                          <li> <a href="{{ url('secteurs') }}">Ajouter</a> </li>
+                        </ul>
+                      </li>
+
+                      <li class="nav-item nav-item-has-subnav">
+                        <a href="javascript:void(0)"><i class="mdi mdi-cash-multiple"></i> Budgets</a>
+                        <ul class="nav nav-subnav">
+                          <li> <a href="{{ url('budgets') }}">Ajouter</a> </li>
                         </ul>
                       </li>
                       
