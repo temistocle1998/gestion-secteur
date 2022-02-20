@@ -4,7 +4,7 @@
     <div class="card">
       <div class="card-toolbar clearfix">
         <div class="toolbar-btn-action">
-          <a class="btn btn-primary m-r-5" routerLink="/add-categorie"><i class="mdi mdi-plus"></i>Nouvelle Categories</a>
+          <a class="btn btn-primary m-r-5" href="/regions/create"><i class="mdi mdi-plus"></i>Nouvelle region</a>
         </div>
       </div>
       <div class="card-body">
