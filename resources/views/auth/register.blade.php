@@ -56,5 +56,9 @@
                 </x-jet-button>
             </div>
         </form>
+        <hr>
+        <footer class="col-sm-12 text-center">
+          <p class="m-b-0">Copyright © 2020-2021 <a href="#">LMIO3</a>. Tous droits réservés</p>
+        </footer>
 @endsection
 </x-guest-layout>
