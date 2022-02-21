@@ -4,7 +4,7 @@
     <div class="card">
       <div class="card-header"><h4>affecter un secteur</h4></div>
       <div class="card-body">
-        <form class="form-horizontal" method="POST" action="{{ route('regions.store') }}">
+        <form class="form-horizontal" method="POST" action="{{ url('/regions') }}">
             <div class="form-group">
                 <select class="form-control @error('secteur_id') is-invalid @enderror" name="secteur_id" id="">
                     @foreach ($secteurs as $secteur)
