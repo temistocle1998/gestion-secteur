@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Region;
+use App\Models\Secteur;
 use Illuminate\Http\Request;
 
 class RegionController extends Controller
@@ -86,7 +87,18 @@ class RegionController extends Controller
         $collections = Region::with('secteurs')->where('id', $region->id)->get();
 
        return view('regions.region-secteur', compact('region', 'collections'));
-        //return response()->json($collections);
+    }
+
+    public function affecterSecteur($id)
+    {
+        $secteurs = Secteur::all();
+
+        return view('regions.affectation', compact('secteurs'));
+    }
+
+    public function affecter()
+    {
+        # code...
     }
 
 

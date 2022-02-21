@@ -19,9 +19,9 @@ class BudgetController extends Controller
         return view('budgets.index', compact('budgets'));
     }
 
-    public function create(Budget $region)
+    public function create(Budget $budget)
     {
-        return view('budgets.create', compact('region'));
+        return view('budgets.create', compact('budget'));
     }
 
     /**
@@ -36,7 +36,7 @@ class BudgetController extends Controller
             'nom' => 'required|string',
         ]);
 
-        $region = Budget::create($data);
+        $budget = Budget::create($data);
 
         return redirect('budgets');
     }
@@ -44,40 +44,40 @@ class BudgetController extends Controller
     /**
      * edit the specified resource.
      *
-     * @param  \App\Models\Budget  $region
+     * @param  \App\Models\Budget  $budget
      * @return \Illuminate\Http\Response
      */
-    public function edit(Budget $region)
+    public function edit(Budget $budget)
     {
-        return view('budgets.edit', compact('region'));
+        return view('budgets.edit', compact('budget'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Budget  $region
+     * @param  \App\Models\Budget  $budget
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Budget $region)
+    public function update(Request $request, Budget $budget)
     {
         $data = request()->validate([
             'nom' => 'required|string',
         ]);
 
-        $region->update($data);
-        return redirect('budgets/'. $region->id.'/edit');
+        $budget->update($data);
+        return redirect('budgets/'. $budget->id.'/edit');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Budget  $region
+     * @param  \App\Models\Budget  $budget
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Budget $region)
+    public function destroy(Budget $budget)
     {
-        $region->delete();
+        $budget->delete();
         return redirect('budgets');
     }
 }

@@ -32,3 +32,4 @@ Route::resource('users', UserController::class)->middleware('auth');
 Route::resource('secteurs', SecteurController::class)->middleware('auth');
 
 Route::get('secteurRegion/{region}', [RegionController::class, 'regionWithSecteurs']);
+Route::get('affecter/{id}', [RegionController::class, 'affecterSecteur']);
