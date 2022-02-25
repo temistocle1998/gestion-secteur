@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('regions_secteurs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('region_id');
-            $table->foreignId('secteur_id');
+            $table->foreignId('region_id')->references('id')->on('regions');
+            $table->foreignId('secteur_id')->references('id')->on('secteurs');
             $table->timestamps();
         });
     }

@@ -11,4 +11,23 @@ class Agence extends Model
 
     protected $guarded = [];
 
+    /**
+     * Get the regions associated with the Agence
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function regions()
+    {
+        return $this->hasOne(Region::class);
+    }
+
+    /**
+     * Get all of the agents for the Agence
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function agents()
+    {
+        return $this->hasMany(Agent::class);
+    }
 }

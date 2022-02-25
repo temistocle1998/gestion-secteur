@@ -13,10 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('agences', function (Blueprint $table) {
+        Schema::create('travailleurs', function (Blueprint $table) {
             $table->id();
+            $table->string('prenom');
             $table->string('nom');
-            $table->foreignId('region_id')->references('id')->on('regions');
+            $table->string('profession');
+            $table->foreignId('secteur_id')->references('id')->on('secteurs');
+            $table->foreignId('agent_id')->references('id')->on('agents');
+            $table->string('adresse');
+            $table->string('telephone');
+            $table->string('age');
+            $table->string('sexe');
             $table->timestamps();
         });
     }
@@ -28,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('agences');
+        Schema::dropIfExists('travailleurs');
     }
 };

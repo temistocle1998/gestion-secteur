@@ -15,6 +15,7 @@ class RegionController extends Controller
      */
     public function index()
     {
+        $this->authorize('viewAny', Region::class);
         $regions = Region::all();
 
         return view('regions.index', compact('regions'));

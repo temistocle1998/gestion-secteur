@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+<div class="row">
 <div class="col-lg-12">
     <div class="card">
       <div class="card-toolbar clearfix">
@@ -26,7 +27,11 @@
                   <td>
                     <div class="btn-group">
                       <a href="/agences/{{ $agence->id }}/edit" class="btn btn-xs btn-default" type="button" title="editer" data-toggle="modal"><i class="mdi mdi-pencil"></i></a>
-                      <a href="#" class="btn btn-xs btn-default" type="button"  title="supprimer" data-toggle="tooltip"><i class="mdi mdi-window-close"></i></a>
+                      <form action="/agences/{{ $agence->id }}" method="post" style="display: inline;">
+                        @csrf
+                        @method('DELETE')
+                        <a href="" class="btn btn-xs btn-default" type="button"  title="supprimer" data-toggle="tooltip"><i class="mdi mdi-window-close"></i></a>
+                        </form>
                       <a href="/affecter/{{ $agence->id }}" class="btn btn-xs btn-default" type="button"  title="affecter" data-toggle="tooltip"><i class="mdi mdi-view-module"></i></a>
                     </div>
                   </td>
@@ -38,4 +43,5 @@
       </div>
     </div>
   </div>  
+</div>
 @endsection

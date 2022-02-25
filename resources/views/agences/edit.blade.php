@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+<div class="row">
 <div class="col-md-6">
     <div class="card">
       <div class="card-header"><h4>Ajouter une région</h4></div>
@@ -20,4 +21,5 @@
       </div>
     </div>
   </div>
+</div>
 @endsection

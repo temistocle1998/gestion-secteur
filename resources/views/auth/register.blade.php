@@ -17,20 +17,40 @@
                 <span class="mdi mdi-email form-control-feedback" aria-hidden="true"></span>
             </div>
 
-            <div class="form-group has-feedback feedback-left"">
+            <div class="form-group has-feedback feedback-left">
+                <x-jet-label for="telephone" value="{{ __('Telephone') }}" />
+                <x-jet-input id="telephone" class="form-control" type="telephone" name="telephone" :value="old('telephone')" required />
+                <span class="mdi mdi-phone form-control-feedback" aria-hidden="true"></span>
+            </div>
+            
+
+            <div class="form-group">
+                <select class="form-control @error('region_id') is-invalid @enderror" name="region_id" id="">
+                    @foreach ($regions as $region)
+                        <option value="{{ $region->id }}" {{ $region->id ? 'selected' : '' }}>{{ $region->nom }}</option>
+                    @endforeach
+                </select>
+                @error('region_id')
+                    <div class="invalid-feedback">
+                        {{$errors->first('region_id')}}
+                    </div>
+                @enderror
+            </div>
+            
+            <div class="form-group has-feedback feedback-left">
                 <x-jet-label for="password" value="{{ __('Password') }}" />
                 <x-jet-input id="password" class="form-control" type="password" name="password" required autocomplete="new-password" />
                 <span class="mdi mdi-lock form-control-feedback" aria-hidden="true"></span>
             </div>
 
-            <div class="form-group has-feedback feedback-left"">
+            <div class="form-group has-feedback feedback-left">
                 <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
                 <x-jet-input id="password_confirmation" class="form-control" type="password" name="password_confirmation" required autocomplete="new-password" />
                 <span class="mdi mdi-lock form-control-feedback" aria-hidden="true"></span>
             </div>
 
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
-                <div class="form-group has-feedback feedback-left"">
+                <div class="form-group has-feedback feedback-left">
                     <x-jet-label for="terms">
                         <div class="flex items-center">
                             <x-jet-checkbox name="terms" id="terms"/>

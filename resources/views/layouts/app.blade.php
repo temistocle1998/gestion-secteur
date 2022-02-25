@@ -24,39 +24,51 @@
                 
                 <!-- logo -->
                 <div id="logo" class="sidebar-header">
-                  <a href="/"><img src="{{ asset('theme/images/logo-ico.png') }}" title="LightYear" alt="LightYear" /></a>
+                  <a href="/"><img src="{{ asset('logo.png') }}" title="LightYear" alt="LightYear" /></a>
                 </div>
                 <div class="lyear-layout-sidebar-scroll"> 
                   
                   <nav class="sidebar-main">
                     <ul class="nav nav-drawer">
                       <li class="nav-item active"> <a href="/"><i class="mdi mdi-home"></i> Accueil</a> </li>
+                      @can('viewAny', 'App\\Models\Region')
+                        
                       <li class="nav-item nav-item-has-subnav">
                         <a href="javascript:void(0)"><i class="mdi mdi-city"></i> Régions</a>
                         <ul class="nav nav-subnav">
                           <li> <a href="{{ url('regions') }}">Ajouter</a> </li>
                         </ul>
                       </li>
+                      @endcan
+
+                      @can('viewAny', 'App\\Models\User')
+
                       <li class="nav-item nav-item-has-subnav">
                         <a href="javascript:void(0)"><i class="mdi mdi-account"></i> Utilisateurs</a>
                         <ul class="nav nav-subnav">
                           <li> <a href="{{ url('users') }}">Ajouter</a> </li>
                         </ul>
                       </li>
+                      @endcan
 
+                      @can('viewAny', 'App\\Models\Secteur')
                       <li class="nav-item nav-item-has-subnav">
                         <a href="javascript:void(0)"><i class="mdi mdi-domain"></i> Secteurs</a>
                         <ul class="nav nav-subnav">
                           <li> <a href="{{ url('secteurs') }}">Ajouter</a> </li>
                         </ul>
                       </li>
+                      @endcan
 
+                      @cannot('viewAny', 'App\\Models\Travailleur')
                       <li class="nav-item nav-item-has-subnav">
-                        <a href="javascript:void(0)"><i class="mdi mdi-cash-multiple"></i> Budgets</a>
+                        <a href="javascript:void(0)"><i class="mdi mdi-domain"></i> Travailleurs</a>
                         <ul class="nav nav-subnav">
-                          <li> <a href="{{ url('budgets') }}">Ajouter</a> </li>
+                          <li> <a href="{{ url('travailleurs') }}">Ajouter</a> </li>
                         </ul>
                       </li>
+                      @endcan
+
                       
                     </ul>
                   </nav>
@@ -81,13 +93,27 @@
                         <span class="lyear-toggler-bar"></span>
                         <span class="lyear-toggler-bar"></span>
                       </div>
-                      <span class="navbar-page-title"> Tableau de bord </span>
+
+                      @cannot('viewAny', 'App\\Models\User')
+                      @foreach ($nomAgence as $data)
+                      <span class="navbar-page-title"> Tableau de bord {{$data->nom}}</span>
+                      @endforeach
+                      @endcannot
+
+                      @can('viewAny', 'App\\Models\User')
+                      <span class="navbar-page-title"> Tableau de bord super Admin</span>
+                      @endcannot
                     </div>
                     
                     <ul class="topbar-right">
                       <li class="dropdown dropdown-profile">
                         <a href="javascript:void(0)" data-toggle="dropdown">
-                          <img class="img-avatar img-avatar-48 m-r-10" src="{{ asset('theme/images/users/avatar.jpg') }}" alt="笔下光年" />
+                        @if (Auth::user()->email == "ousmane.ndiaye@univ-thies.sn")
+                        <img class="img-avatar img-avatar-48 m-r-10" src="{{ asset('mbax.jpg') }}" alt="笔下光年" />
+                        @endif
+                        @if (Auth::user()->email == "ngagne.thioub@univ-thies.sn")
+                        <img class="img-avatar img-avatar-48 m-r-10" src="{{ asset('ngagne.png') }}" alt="笔下光年" />
+                        @endif
                           <span>{{ Auth::user()->name }} <span class="caret"></span></span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-right">
@@ -116,10 +142,13 @@
               <main class="lyear-layout-content">
       
                 <div class="container-fluid p-t-15">
-            
-            <div class="row">
+            @if (session()->has('message'))
+            <div class="alert alert-success">
+              {{ session()->get('message') }}
+            </div>
+                
+            @endif
               @yield('content')
-              </div>
             
             </div>
             

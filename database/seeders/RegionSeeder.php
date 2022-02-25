@@ -15,13 +15,24 @@ class RegionSeeder extends Seeder
      */
     public function run()
     {
-        $villes = [
-            ['nom'=>'Tambacoundaa'],
-            ['nom'=>'DAKAR'],
+        $regions = [
+            ['nom'=>'Tambacounda'],
+            ['nom'=>'Dakar'],
+            ['nom'=>'Saint louis'],
+            ['nom'=>'Matam'],
+            ['nom'=>'Thiès'],
+            ['nom'=>'Kaolack'],
+            ['nom'=>'Kolda'],
+            ['nom'=>'Kedougou'],
+            ['nom'=>'Ziguinchor'],
+            ['nom'=>'Diourbel'],
+            ['nom'=>'Fatick'],
+            ['nom'=>'Louga'],
+            ['nom'=>'Podor'],
         ];
      
-        foreach($villes as $ville){
-            Region::create($ville);
+        foreach($regions as $region){
+            Region::create($region);
         }
     }
 }

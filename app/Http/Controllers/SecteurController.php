@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Agence;
+use App\Models\Agent;
 use App\Models\Secteur;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SecteurController extends Controller
 {
@@ -14,6 +17,7 @@ class SecteurController extends Controller
      */
     public function index()
     {
+        $this->authorize('viewAny', Secteur::class);
         $secteurs = Secteur::all();
 
         return view('secteurs.index', compact('secteurs'));
@@ -79,5 +83,23 @@ class SecteurController extends Controller
     {
         $secteur->delete();
         return redirect('secteurs');
+    }
+
+    public function secteurByAdmin($id)
+    {
+        $idAgence = Agent::with('agences')->where('user_id', Auth::user()->id);
+
+        $idAgence = $idAgence->get()->map(function ($idAgence)
+        {
+            return [
+                'idAgence'=>$idAgence->agence_id
+            ];
+        });
+
+        $nomAgence = Agence::find($idAgence);
+
+        $datas = Agent::with('agences')->where('user_id', Auth::user()->id);
+
+        return view('agents.secteurs', compact('datas', 'nomAgence'));
     }
 }

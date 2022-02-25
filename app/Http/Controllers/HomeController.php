@@ -14,6 +14,12 @@ class HomeController extends Controller
         if ($role == 'admin') {
             return view('admin.dashboard');
         }
+        if ($role == 'admin-agence') {
+            return view('admin-agence.dashboard');
+        }
+        if ($role == 'agent') {
+            return view('agents.dashboard');
+        }
         else {
             return view('dashboard');
         }
