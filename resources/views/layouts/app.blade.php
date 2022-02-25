@@ -24,7 +24,7 @@
                 
                 <!-- logo -->
                 <div id="logo" class="sidebar-header">
-                  <a href="/"><img src="{{ asset('logo.png') }}" title="LightYear" alt="LightYear" /></a>
+                  <a href="/"><img src="{{ asset('logo-g.png') }}" title="LightYear" alt="LightYear" /></a>
                 </div>
                 <div class="lyear-layout-sidebar-scroll"> 
                   

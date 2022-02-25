@@ -19,15 +19,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [AdminController::class, 'index'])->middleware('auth');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
-Route::get('/redirects', [AdminController::class, 'index']);
-Route::resource('regions', RegionController::class);
+Route::get('/redirects', [AdminController::class, 'index'])->middleware('auth');
+Route::resource('regions', RegionController::class)->middleware('auth');;
 Route::resource('users', UserController::class)->middleware('auth');
 Route::resource('secteurs', SecteurController::class)->middleware('auth');
 Route::resource('agences', AgenceController::class)->middleware('auth');

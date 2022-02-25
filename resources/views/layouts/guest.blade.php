@@ -57,9 +57,7 @@
             <div class="lyear-login">
               <div class="login-center">
                 <div class="login-header text-center">
-                    <a href="/"> 
-                        <img alt="light year admin" src="{{ asset('theme/images/logo-sidebar.png')}}"> 
-                    </a>
+                    <h4>Gestion secteur</h4>
                 </div>
             @yield('content')
              </div>
